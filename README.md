@@ -13,7 +13,7 @@ Brute-force tool for attack accounts on ticketmaster.se
 
 ## Preview
 
-![Screenshot](https://i.imgur.com/oUowgAU.gif)
+![Screenshot](https://i.imgur.com/Ug9RCrh.gif)
 
 ## Authors: 
 
